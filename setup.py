@@ -1,12 +1,18 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='chainchomp_lib',
-    version='0.1',
-    packages=['configlayer', 'configlayer.helper', 'configlayer.verify', 'configlayer.verify.schema'],
-    url='https://github.com/trashtatur/chainchomp-lib',
-    license='MIT',
-    author='Andreas Hoerster',
-    author_email='andreas-hoerster@web.de',
-    description='Library for common chainchomp resources'
+    version='0.0.1',
+    packages=find_packages(),
+    description='Library for commons for chainchomp',
+    url='https://github.com/trashtatur/chainchomp_lib/',
+    classifiers=[
+        'Development Status :: Alpha',
+        'Programming Language :: Python',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+    ],
 )
