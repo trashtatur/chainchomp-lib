@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='chainchomp-lib',
+    name='chainchomp_lib',
     version='0.1',
     packages=['configlayer', 'configlayer.helper', 'configlayer.verify', 'configlayer.verify.schema'],
     url='https://github.com/trashtatur/chainchomp-lib',
