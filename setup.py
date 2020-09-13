@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='chainchomplib',
-    version='0.0.3',
+    version='0.0.4',
     packages=find_packages(),
     description='Library for commons for chainchomp',
     url='https://github.com/trashtatur/chainchomp_lib/',
