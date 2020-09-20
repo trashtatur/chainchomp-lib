@@ -19,6 +19,6 @@ class ChainfileSchema(AbstractConfigSchema):
             'chainlink': ChainlinkSchema.get_schema_dict(),
             Optional('start'): str,
             Optional('stop'): str,
-            Optional('masterLink'): str,
+            Optional('masterLink'): bool,
             Optional('profile'): str
         }

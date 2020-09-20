@@ -18,8 +18,6 @@ class ChainlinkSchema(AbstractConfigSchema):
     @classmethod
     def get_schema_dict(cls) -> dict:
         return {
-            'chainlink': {
-                'name': str,
-                Optional(Or("next", "previous")): str,
-            }
+            'name': str,
+            Optional(Or("next", "previous")): str,
         }
