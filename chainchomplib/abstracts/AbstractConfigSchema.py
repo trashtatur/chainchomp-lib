@@ -5,6 +5,8 @@ from schema import Schema
 
 class AbstractConfigSchema(abc.ABC):
 
+    schema = None
+
     def __init__(self):
         self.schema = self.init_schema()
 
@@ -16,4 +18,6 @@ class AbstractConfigSchema(abc.ABC):
     @abc.abstractmethod
     def get_schema_dict(cls) -> dict:
         pass
+
+
 

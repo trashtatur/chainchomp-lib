@@ -9,7 +9,6 @@ class ChainlinkConfigModel:
             start='echo "No start script provided"',
             stop='echo "No stop script provided"',
             is_master_link=False,
-            master_location='localhost',
             mq_type='rabbitmq',
             profile='default'
 
@@ -21,6 +20,5 @@ class ChainlinkConfigModel:
         self.next_link = next_link
         self.chainlink_name = chainlink_name
         self.project_name = project_name
-        self.master_location = master_location
         self.mq_type = mq_type
         self.profile = profile
