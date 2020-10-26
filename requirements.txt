@@ -1,4 +1,4 @@
 schema~=0.7.2
 setuptools~=49.2.1
-chainchomplib~=0.0.4
+chainchomplib>=0.0.5
 PyYAML~=5.3.1
