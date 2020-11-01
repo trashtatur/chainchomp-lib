@@ -6,14 +6,14 @@ def env_based_base_folder():
     if 'CHAINCHOMP_TEST' not in os.environ:
         return Path.home()
 
-    if os.environ.get('CHAINCHOMP_TEST') is 0:
+    if os.environ.get('CHAINCHOMP_TEST') is '0':
         return Path.home()
 
-    if os.environ.get('CHAINCHOMP_TEST') is 1:
+    if os.environ.get('CHAINCHOMP_TEST') is '1':
         if 'CHAINCHOMP_TEST_DIR' not in os.environ:
             return Path.home()
 
-        return os.environ.get('CHAINCHOMP_TEST_DIR')
+        return Path(os.environ.get('CHAINCHOMP_TEST_DIR'))
 
 
 def base_config_folder():
