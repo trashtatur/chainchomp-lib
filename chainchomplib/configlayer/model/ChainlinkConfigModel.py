@@ -22,3 +22,14 @@ class ChainlinkConfigModel:
         self.project_name = project_name
         self.mq_type = mq_type
         self.profile = profile
+
+    def __eq__(self, other):
+        return self.project_name == other.project_name \
+            and self.chainlink_name == other.chainlink_name \
+            and self.next_link == other.next_link \
+            and self.previous_link == other.previous_link \
+            and self.start == other.start \
+            and self.stop == other.stop \
+            and self.is_master_link == other.is_master_link \
+            and self.mq_type == other.mq_type \
+            and self.profile == other.profile
