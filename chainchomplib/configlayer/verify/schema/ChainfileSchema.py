@@ -20,5 +20,6 @@ class ChainfileSchema(AbstractConfigSchema):
             Optional('start'): str,
             Optional('stop'): str,
             Optional('masterLink'): bool,
-            Optional('profile'): str
+            Optional('profile'): str,
+            Optional('adapter'): str
         }
