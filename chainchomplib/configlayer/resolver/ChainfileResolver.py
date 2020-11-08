@@ -26,13 +26,13 @@ class ChainfileResolver(AbstractResolver):
 
         if not schema_is_valid:
             return
+
         chainlink_sub_dict: dict = chainfile_data.get('chainlink')
         chainlink_name = chainlink_sub_dict.get('name')
         chainlink_next = chainlink_sub_dict.get('next')
         chainlink_previous = chainlink_sub_dict.get('previous')
         start = chainlink_sub_dict.get('start')
         stop = chainlink_sub_dict.get('stop')
-        is_master = chainlink_sub_dict.get('masterLink')
         adapter_type = chainlink_sub_dict.get('mqtype')
         profile = chainlink_sub_dict.get('profile')
 
@@ -52,9 +52,6 @@ class ChainfileResolver(AbstractResolver):
 
         if stop is not None:
             model.stop = stop
-
-        if is_master is not None:
-            model.is_master_link = is_master
 
         if adapter_type is not None:
             model.mq_type = adapter_type

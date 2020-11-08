@@ -8,12 +8,10 @@ class ChainlinkConfigModel:
             previous_link='',
             start='echo "No start script provided"',
             stop='echo "No stop script provided"',
-            is_master_link=False,
             mq_type='rabbitmq',
             profile='default'
 
     ):
-        self.is_master_link = is_master_link
         self.stop = stop
         self.start = start
         self.previous_link = previous_link
@@ -30,6 +28,5 @@ class ChainlinkConfigModel:
             and self.previous_link == other.previous_link \
             and self.start == other.start \
             and self.stop == other.stop \
-            and self.is_master_link == other.is_master_link \
             and self.mq_type == other.mq_type \
             and self.profile == other.profile

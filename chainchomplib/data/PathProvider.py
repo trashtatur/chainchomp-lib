@@ -34,7 +34,7 @@ def env_var_folder():
 
 
 def installed_adapters_folder():
-    return base_config_folder().joinpath('adapaters')
+    return base_config_folder().joinpath('adapters')
 
 
 def fixtures_folder():
