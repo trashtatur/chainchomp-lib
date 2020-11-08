@@ -1,5 +1,8 @@
 from schema import Schema
 
-def build_schema_from_dict(schema_data: dict) -> Schema:
-    return Schema(schema_data)
+from chainchomplib.abstracts.AbstractConfigSchema import AbstractConfigSchema
+
+
+def build_schema(schema_data: AbstractConfigSchema) -> Schema:
+    return Schema(schema_data.get_schema_dict())
 
