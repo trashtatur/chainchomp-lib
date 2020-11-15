@@ -39,3 +39,7 @@ def installed_adapters_folder():
 
 def fixtures_folder():
     return base_config_folder().joinpath('fixtures')
+
+
+def log_folder():
+    return base_config_folder().joinpath('logs')

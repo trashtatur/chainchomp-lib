@@ -1,42 +1,46 @@
 import os
 import yaml
-from chainchomplib.configlayer.model.ChainlinkConfigModel import ChainlinkConfigModel
+
+from chainchomplib import LoggerInterface
+from chainchomplib.configlayer.model.ChainfileModel import ChainfileModel
 
 from chainchomplib.abstracts.AbstractResolver import AbstractResolver
 from chainchomplib.configlayer.verify.SchemaVerifier import SchemaVerifier
 from chainchomplib.configlayer.verify.schema.ChainfileSchema import ChainfileSchema
+from chainchomplib.exceptions.Exceptions import NotValidException
 
 
 class ChainfileResolver(AbstractResolver):
 
-    def resolve_config_file(self, path_to_file: str):
+    @staticmethod
+    def resolve_config_file(path_to_file: str):
 
         if not os.path.isfile(path_to_file):
             return
 
-        chainfile_data = None
         with open(path_to_file) as chainfile:
             try:
                 chainfile_data = yaml.safe_load(chainfile)
             except yaml.YAMLError:
                 # TODO handle Exception
-                print('Failed to load chainfile')
+                LoggerInterface.error(f'The provided file is not in valid yaml syntax: {path_to_file}')
+                return
 
-        schema_is_valid = SchemaVerifier.verify(chainfile_data, ChainfileSchema().schema)
-
-        if not schema_is_valid:
+        try:
+            SchemaVerifier.verify(chainfile_data, ChainfileSchema())
+        except NotValidException:
             return
 
         chainlink_sub_dict: dict = chainfile_data.get('chainlink')
         chainlink_name = chainlink_sub_dict.get('name')
         chainlink_next = chainlink_sub_dict.get('next')
         chainlink_previous = chainlink_sub_dict.get('previous')
-        start = chainlink_sub_dict.get('start')
-        stop = chainlink_sub_dict.get('stop')
-        adapter_type = chainlink_sub_dict.get('mqtype')
-        profile = chainlink_sub_dict.get('profile')
+        start = chainfile_data.get('start')
+        stop = chainfile_data.get('stop')
+        adapter_type = chainfile_data.get('adapter')
+        profile = chainfile_data.get('profile')
 
-        model = ChainlinkConfigModel(
+        model = ChainfileModel(
             chainfile_data['project'],
             chainlink_name
         )
@@ -54,7 +58,7 @@ class ChainfileResolver(AbstractResolver):
             model.stop = stop
 
         if adapter_type is not None:
-            model.mq_type = adapter_type
+            model.adapter = adapter_type
 
         if profile is not None:
             model.profile = profile

@@ -1,4 +1,4 @@
-class ChainlinkConfigModel:
+class ChainfileModel:
 
     def __init__(
             self,
@@ -8,9 +8,8 @@ class ChainlinkConfigModel:
             previous_link='',
             start='echo "No start script provided"',
             stop='echo "No stop script provided"',
-            mq_type='rabbitmq',
+            adapter='rabbitmq',
             profile='default'
-
     ):
         self.stop = stop
         self.start = start
@@ -18,7 +17,7 @@ class ChainlinkConfigModel:
         self.next_link = next_link
         self.chainlink_name = chainlink_name
         self.project_name = project_name
-        self.mq_type = mq_type
+        self.adapter = adapter
         self.profile = profile
 
     def __eq__(self, other):
@@ -28,5 +27,5 @@ class ChainlinkConfigModel:
             and self.previous_link == other.previous_link \
             and self.start == other.start \
             and self.stop == other.stop \
-            and self.mq_type == other.mq_type \
+            and self.adapter == other.adapter \
             and self.profile == other.profile

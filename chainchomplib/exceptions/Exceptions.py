@@ -1,4 +1,4 @@
-class ChainfileNotValidException(Exception):
+class NotValidException(Exception):
     """
     This exception gets thrown when a
     chainfile is not valid
