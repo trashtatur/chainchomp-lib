@@ -3,7 +3,7 @@ import abc
 from schema import Schema
 
 
-class AbstractConfigSchema(abc.ABC):
+class AbstractSchema(abc.ABC):
 
     schema = None
 

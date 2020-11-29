@@ -4,13 +4,17 @@ class ChainfileModel:
             self,
             project_name: str,
             chainlink_name: str,
-            next_link='',
-            previous_link='',
+            next_link=None,
+            previous_link=None,
             start='echo "No start script provided"',
             stop='echo "No stop script provided"',
             adapter='rabbitmq',
             profile='default'
     ):
+        if next_link is None:
+            next_link = []
+        if previous_link is None:
+            previous_link = []
         self.stop = stop
         self.start = start
         self.previous_link = previous_link

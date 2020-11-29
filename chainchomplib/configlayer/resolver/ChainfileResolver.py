@@ -5,8 +5,8 @@ from chainchomplib import LoggerInterface
 from chainchomplib.configlayer.model.ChainfileModel import ChainfileModel
 
 from chainchomplib.abstracts.AbstractResolver import AbstractResolver
-from chainchomplib.configlayer.verify.SchemaVerifier import SchemaVerifier
-from chainchomplib.configlayer.verify.schema.ChainfileSchema import ChainfileSchema
+from chainchomplib.verify.SchemaVerifier import SchemaVerifier
+from chainchomplib.verify.schema.ChainfileSchema import ChainfileSchema
 from chainchomplib.exceptions.Exceptions import NotValidException
 
 
@@ -22,7 +22,6 @@ class ChainfileResolver(AbstractResolver):
             try:
                 chainfile_data = yaml.safe_load(chainfile)
             except yaml.YAMLError:
-                # TODO handle Exception
                 LoggerInterface.error(f'The provided file is not in valid yaml syntax: {path_to_file}')
                 return
 

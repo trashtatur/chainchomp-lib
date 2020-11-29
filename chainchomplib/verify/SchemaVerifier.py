@@ -1,14 +1,14 @@
 from schema import SchemaError
 
-from chainchomplib.abstracts.AbstractConfigSchema import AbstractConfigSchema
-from chainchomplib.configlayer.verify import SchemaBuilder
+from chainchomplib.abstracts.AbstractSchema import AbstractSchema
+from chainchomplib.verify import SchemaBuilder
 from chainchomplib.exceptions.Exceptions import NotValidException
 
 
 class SchemaVerifier:
 
     @staticmethod
-    def verify(data: dict, schema: AbstractConfigSchema) -> bool:
+    def verify(data: dict, schema: AbstractSchema) -> bool:
         try:
             built_schema = SchemaBuilder.build_schema(schema)
             return built_schema.validate(data)

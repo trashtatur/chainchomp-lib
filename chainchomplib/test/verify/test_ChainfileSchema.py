@@ -1,13 +1,13 @@
 import unittest
 
-from chainchomplib.configlayer.verify.SchemaVerifier import SchemaVerifier
+from chainchomplib.verify.SchemaVerifier import SchemaVerifier
 from chainchomplib.exceptions.Exceptions import NotValidException
 from parameterized import parameterized
 
-from chainchomplib.configlayer.verify.schema.ChainfileSchema import ChainfileSchema
+from chainchomplib.verify.schema.ChainfileSchema import ChainfileSchema
 
 
-class SchemaVerifierTest(unittest.TestCase):
+class ChainfileSchemaTest(unittest.TestCase):
 
     @parameterized.expand([
         [{}, ChainfileSchema(), NotValidException],
@@ -28,8 +28,8 @@ class SchemaVerifierTest(unittest.TestCase):
             SchemaVerifier.verify(data, schema)
 
     @parameterized.expand([
-        [{'project': 'test', 'chainlink': {'name': 'test', 'next': 'test'}}, ChainfileSchema()],
-        [{'project': 'test', 'chainlink': {'name': 'test', 'next': 'test', 'previous': 'test'}}, ChainfileSchema()],
+        [{'project': 'test', 'chainlink': {'name': 'test', 'next': ['test']}}, ChainfileSchema()],
+        [{'project': 'test', 'chainlink': {'name': 'test', 'next': ['test'], 'previous': ['test']}}, ChainfileSchema()],
         [{'project': 'test', 'chainlink': {'name': 'test'}}, ChainfileSchema()],
         [{'project': 'test', 'chainlink': {'name': 'test'}, 'start': 'test'}, ChainfileSchema()],
         [{'project': 'test', 'chainlink': {'name': 'test'}, 'start': 'test', 'stop': 'test'}, ChainfileSchema()],

@@ -1,10 +1,10 @@
 from schema import Schema, Optional
 
-from chainchomplib.abstracts.AbstractConfigSchema import AbstractConfigSchema
-from chainchomplib.configlayer.verify.schema.ChainlinkSchema import ChainlinkSchema
+from chainchomplib.abstracts.AbstractSchema import AbstractSchema
+from chainchomplib.verify.schema.ChainlinkSchema import ChainlinkSchema
 
 
-class ChainfileSchema(AbstractConfigSchema):
+class ChainfileSchema(AbstractSchema):
 
     def __init__(self):
         super().__init__()

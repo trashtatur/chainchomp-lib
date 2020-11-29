@@ -1,9 +1,9 @@
 from schema import Schema, Or, Optional
 
-from chainchomplib.abstracts.AbstractConfigSchema import AbstractConfigSchema
+from chainchomplib.abstracts.AbstractSchema import AbstractSchema
 
 
-class ChainlinkSchema(AbstractConfigSchema):
+class ChainlinkSchema(AbstractSchema):
     """
     General schema for chain links. Every one has to adhere to it.
     Sub schemas relate to specific MQ configurations
@@ -19,5 +19,5 @@ class ChainlinkSchema(AbstractConfigSchema):
     def get_schema_dict(cls) -> dict:
         return {
             'name': str,
-            Optional(Or("next", "previous")): str,
+            Optional(Or("next", "previous")): [str],
         }
