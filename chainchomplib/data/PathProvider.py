@@ -43,3 +43,8 @@ def fixtures_folder():
 
 def log_folder():
     return base_config_folder().joinpath('logs')
+
+
+def chainlinks_folder():
+    return base_config_folder().joinpath('chainlinks')
+

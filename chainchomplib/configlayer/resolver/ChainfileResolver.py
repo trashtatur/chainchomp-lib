@@ -1,10 +1,12 @@
 import os
+import re
 import yaml
 
 from chainchomplib import LoggerInterface
 from chainchomplib.configlayer.model.ChainfileModel import ChainfileModel
 
 from chainchomplib.abstracts.AbstractResolver import AbstractResolver
+from chainchomplib.configlayer.resolver.FunctionResolver import FunctionResolver
 from chainchomplib.verify.SchemaVerifier import SchemaVerifier
 from chainchomplib.verify.schema.ChainfileSchema import ChainfileSchema
 from chainchomplib.exceptions.Exceptions import NotValidException
@@ -40,26 +42,26 @@ class ChainfileResolver(AbstractResolver):
         profile = chainfile_data.get('profile')
 
         model = ChainfileModel(
-            chainfile_data['project'],
-            chainlink_name
+            FunctionResolver.parse(chainfile_data['project']),
+            FunctionResolver.parse(chainlink_name)
         )
 
         if chainlink_next is not None:
-            model.next_link = chainlink_next
+            model.next_link = [FunctionResolver.parse(link) for link in chainlink_next]
 
         if chainlink_previous is not None:
-            model.previous_link = chainlink_previous
+            model.previous_link = [FunctionResolver.parse(link) for link in chainlink_next]
 
         if start is not None:
-            model.start = start
+            model.start = FunctionResolver.parse(start)
 
         if stop is not None:
-            model.stop = stop
+            model.stop = FunctionResolver.parse(stop)
 
         if adapter_type is not None:
-            model.adapter = adapter_type
+            model.adapter = FunctionResolver.parse(adapter_type)
 
         if profile is not None:
-            model.profile = profile
+            model.profile = FunctionResolver.parse(profile)
 
         return model

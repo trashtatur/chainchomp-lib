@@ -1,6 +1,5 @@
-from schema import Schema
-
 from chainchomplib.abstracts.AbstractSchema import AbstractSchema
+from schema import Schema
 
 
 class MessageSchema(AbstractSchema):
