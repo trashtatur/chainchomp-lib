@@ -7,7 +7,7 @@ class Message:
         self._message_body = message_body
         self.message_header = message_header
 
-    def get_serialized(self):
+    def get_serialized(self) -> dict:
         return {
             'message_body': self._message_body,
             'message_header': {
