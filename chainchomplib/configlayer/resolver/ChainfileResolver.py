@@ -15,7 +15,7 @@ from chainchomplib.exceptions.Exceptions import NotValidException
 class ChainfileResolver(AbstractResolver):
 
     @staticmethod
-    def resolve_config_file(path_to_file: str):
+    def resolve_chainfile(path_to_file: str):
 
         if not os.path.isfile(path_to_file):
             return

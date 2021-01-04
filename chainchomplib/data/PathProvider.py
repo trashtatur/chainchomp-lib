@@ -40,3 +40,6 @@ def log_folder():
 def chainlinks_folder():
     return base_config_folder().joinpath('chainlinks')
 
+
+def environment_variables_folder():
+    return base_config_folder().joinpath('environment')
