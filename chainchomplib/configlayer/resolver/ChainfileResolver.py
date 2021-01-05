@@ -1,5 +1,4 @@
 import os
-import re
 import yaml
 
 from chainchomplib import LoggerInterface
