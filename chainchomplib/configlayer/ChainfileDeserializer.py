@@ -49,3 +49,5 @@ class ChainfileDeserializer:
 
             if profile is not None:
                 model.profile = FunctionResolver.parse(profile)
+
+            return model
