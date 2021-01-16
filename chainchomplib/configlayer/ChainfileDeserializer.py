@@ -1,3 +1,5 @@
+from chainchomplib.exceptions.Exceptions import NotValidException
+
 from chainchomplib.configlayer.model.ChainfileModel import ChainfileModel
 
 from chainchomplib.verify.schema.ChainfileSchema import ChainfileSchema
@@ -9,15 +11,18 @@ class ChainfileDeserializer:
 
     @staticmethod
     def deserialize(data: dict) -> ChainfileModel or None:
-        if not SchemaVerifier.verify(data, ChainfileSchema()):
+        try:
+            SchemaVerifier.verify(data, ChainfileSchema())
+        except NotValidException:
             return None
-        return ChainfileModel(
-            data['project'],
-            data['chainlink']['name'],
-            data['chainlink']['next'],
-            data['chainlink']['previous'],
-            data['start'],
-            data['stop'],
-            data['adapter'],
-            data['profile']
-        )
+        else:
+            return ChainfileModel(
+                data['project'],
+                data['chainlink']['name'],
+                data['chainlink']['next'],
+                data['chainlink']['previous'],
+                data['start'],
+                data['stop'],
+                data['adapter'],
+                data['profile']
+            )
