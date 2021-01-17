@@ -19,5 +19,6 @@ class RemoteChainfileDTODeserializer:
                 data['chainfile'],
                 data['is_next'],
                 data['is_previous'],
-                data['remote_link_addr']
+                data['remote_link_addr'],
+                data['name_of_called_link']
             )

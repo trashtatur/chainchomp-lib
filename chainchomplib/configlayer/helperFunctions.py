@@ -28,3 +28,5 @@ def read_file(path: str) -> str:
         finally:
             file.close()
 
+
+print(get_local_host())

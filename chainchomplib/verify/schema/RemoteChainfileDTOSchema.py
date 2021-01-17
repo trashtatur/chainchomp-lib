@@ -14,5 +14,6 @@ class RemoteChainfileDTOSchema(AbstractSchema):
             'chainfile': dict,
             'is_next': bool,
             'is_previous': bool,
-            'remote_link_addr': str
+            'remote_link_addr': str,
+            'name_of_called_link': str
         }
