@@ -49,7 +49,7 @@ class ChainfileResolver(AbstractResolver):
             model.next_links = [FunctionResolver.parse(link) for link in chainlink_next]
 
         if chainlink_previous is not None:
-            model.previous_links = [FunctionResolver.parse(link) for link in chainlink_next]
+            model.previous_links = [FunctionResolver.parse(link) for link in chainlink_previous]
 
         if start is not None:
             model.start = FunctionResolver.parse(start)

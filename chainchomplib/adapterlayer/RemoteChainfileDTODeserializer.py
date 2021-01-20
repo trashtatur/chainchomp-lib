@@ -1,3 +1,5 @@
+from chainchomplib.configlayer.ChainfileDeserializer import ChainfileDeserializer
+
 from chainchomplib.exceptions.Exceptions import NotValidException
 
 from chainchomplib.verify.SchemaVerifier import SchemaVerifier
@@ -16,7 +18,7 @@ class RemoteChainfileDTODeserializer:
             return None
         else:
             return RemoteChainfileDTO(
-                data['chainfile'],
+                ChainfileDeserializer.deserialize(data['chainfile']),
                 data['is_next'],
                 data['is_previous'],
                 data['remote_link_addr'],

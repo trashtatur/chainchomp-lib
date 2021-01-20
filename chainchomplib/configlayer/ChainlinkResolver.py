@@ -17,7 +17,7 @@ class ChainlinkResolver(AbstractResolver):
             LoggerInterface.error(f'A chainlink with the name {name} is not registered')
             return None
 
-        with open(os.path.join(PathProvider.chainlinks_folder(), f'{name}.yml', 'r')) as registered_chainlink:
+        with open(os.path.join(PathProvider.chainlinks_folder(), f'{name}.yml'), 'r') as registered_chainlink:
             try:
                 data = yaml.safe_load(registered_chainlink)
             except yaml.YAMLError as exception:
