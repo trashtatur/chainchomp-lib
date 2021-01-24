@@ -28,26 +28,26 @@ class ChainfileDeserializer:
             profile = data.get('profile', None)
 
             model = ChainfileModel(
-                FunctionResolver.parse(data['project']),
-                FunctionResolver.parse(chainlink_name)
+                FunctionResolver.resolve(data['project']),
+                FunctionResolver.resolve(chainlink_name)
             )
 
             if chainlink_next is not None:
-                model.next_links = [FunctionResolver.parse(link) for link in chainlink_next]
+                model.next_links = [FunctionResolver.resolve(link) for link in chainlink_next]
 
             if chainlink_previous is not None:
-                model.previous_links = [FunctionResolver.parse(link) for link in chainlink_next]
+                model.previous_links = [FunctionResolver.resolve(link) for link in chainlink_next]
 
             if start is not None:
-                model.start = FunctionResolver.parse(start)
+                model.start = FunctionResolver.resolve(start)
 
             if stop is not None:
-                model.stop = FunctionResolver.parse(stop)
+                model.stop = FunctionResolver.resolve(stop)
 
             if adapter_type is not None:
-                model.adapter = FunctionResolver.parse(adapter_type)
+                model.adapter = FunctionResolver.resolve(adapter_type)
 
             if profile is not None:
-                model.profile = FunctionResolver.parse(profile)
+                model.profile = FunctionResolver.resolve(profile)
 
             return model

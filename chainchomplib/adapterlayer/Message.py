@@ -1,7 +1,8 @@
+from chainchomplib.abstracts.Serializable import Serializable
 from chainchomplib.adapterlayer.MessageHeader import MessageHeader
 
 
-class Message:
+class Message(Serializable):
 
     def __init__(self, message_body, message_header: MessageHeader):
         self.message_body = message_body

@@ -16,14 +16,14 @@ class FunctionResolverTest(unittest.TestCase):
         ['{{get_host_name}}', get_host_name()],
     ])
     def test_that_it_resolves_base_functions(self, template_string, expected):
-        result = FunctionResolver.parse(template_string)
+        result = FunctionResolver.resolve(template_string)
         assert result == expected
 
     @parameterized.expand([
         [f'{{{{read_file({os.path.join(os.path.join(PathProvider.base_config_folder(), "jinjaResolver"), "test.txt")})}}}}', 'testcontent'],
     ])
     def test_that_it_works_with_files(self, filename, expected):
-        result = FunctionResolver.parse(filename)
+        result = FunctionResolver.resolve(filename)
         assert result == expected
 
     @parameterized.expand([
@@ -34,6 +34,6 @@ class FunctionResolverTest(unittest.TestCase):
         ['teststring}}', 'teststring}}'],
     ])
     def test_that_it_returns_the_string_itself_if_its_no_function_string(self, non_template_string, expected):
-        result = FunctionResolver.parse(non_template_string)
+        result = FunctionResolver.resolve(non_template_string)
         assert result == expected
 

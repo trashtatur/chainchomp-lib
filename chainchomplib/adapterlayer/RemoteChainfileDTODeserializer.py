@@ -1,3 +1,4 @@
+from chainchomplib.abstracts.AbstractDeserializer import AbstractDeserializer
 from chainchomplib.configlayer.ChainfileDeserializer import ChainfileDeserializer
 
 from chainchomplib.exceptions.Exceptions import NotValidException
@@ -8,7 +9,7 @@ from chainchomplib.data.RemoteChainfileDTO import RemoteChainfileDTO
 from chainchomplib.verify.schema.RemoteChainfileDTOSchema import RemoteChainfileDTOSchema
 
 
-class RemoteChainfileDTODeserializer:
+class RemoteChainfileDTODeserializer(AbstractDeserializer):
 
     @staticmethod
     def deserialize(data: dict) -> RemoteChainfileDTO or None:

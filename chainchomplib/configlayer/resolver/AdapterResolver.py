@@ -1,6 +1,8 @@
 import os
 
 import yaml
+from chainchomplib.abstracts.AbstractResolver import AbstractResolver
+
 from chainchomplib.exceptions.Exceptions import NotValidException
 from chainchomplib.verify.SchemaVerifier import SchemaVerifier
 from chainchomplib import LoggerInterface
@@ -9,10 +11,10 @@ from chainchomplib.data import PathProvider
 from chainchomplib.verify.schema.AdapterFileSchema import AdapterFileSchema
 
 
-class AdapterResolver:
+class AdapterResolver(AbstractResolver):
 
     @staticmethod
-    def resolve(name) -> AdapterFileModel or None:
+    def resolve(name: str) -> AdapterFileModel or None:
         path = os.path.join(PathProvider.installed_adapters_folder(), f'{name}.yml')
         if not os.path.isfile(path):
             return None

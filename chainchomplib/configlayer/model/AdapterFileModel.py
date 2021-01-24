@@ -1,4 +1,7 @@
-class AdapterFileModel:
+from chainchomplib.abstracts.Serializable import Serializable
+
+
+class AdapterFileModel(Serializable):
     def __init__(
             self,
             name: str,

@@ -1,3 +1,4 @@
+from chainchomplib.abstracts.AbstractDeserializer import AbstractDeserializer
 from chainchomplib.exceptions.Exceptions import NotValidException
 
 from chainchomplib.verify.SchemaVerifier import SchemaVerifier
@@ -7,7 +8,7 @@ from chainchomplib.adapterlayer.MessageHeader import MessageHeader
 from chainchomplib.verify.schema.MessageSchema import MessageSchema
 
 
-class MessageDeserializer:
+class MessageDeserializer(AbstractDeserializer):
 
     @staticmethod
     def deserialize(data: dict) -> Message or None:

@@ -17,7 +17,7 @@ class FunctionResolver(AbstractResolver):
         return function_name
 
     @staticmethod
-    def parse(string):
+    def resolve(string: str):
         potential_templates = re.split('({{.+?}})', string)
         potential_template_string = string
         for potential_template in potential_templates:

@@ -24,6 +24,6 @@ class ChainlinkResolver(AbstractResolver):
                 LoggerInterface.error(f'Chainlink file could not be loaded with exception: {exception}')
             else:
                 location = data['path']
-                return ChainfileResolver.resolve_chainfile(os.path.join(location, 'chainfile.yml'))
+                return ChainfileResolver.resolve(os.path.join(location, 'chainfile.yml'))
             finally:
                 registered_chainlink.close()

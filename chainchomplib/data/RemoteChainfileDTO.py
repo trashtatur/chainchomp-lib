@@ -1,7 +1,8 @@
+from chainchomplib.abstracts.Serializable import Serializable
 from chainchomplib.configlayer.model.ChainfileModel import ChainfileModel
 
 
-class RemoteChainfileDTO:
+class RemoteChainfileDTO(Serializable):
 
     def __init__(
             self,

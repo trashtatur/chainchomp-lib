@@ -7,4 +7,7 @@ class AbstractResolver(abc.ABC):
     file and attempts to extract the information that is given
     into meaningful infrastructure model code
     """
-    pass
+    @staticmethod
+    @abc.abstractmethod
+    def resolve(data):
+        pass

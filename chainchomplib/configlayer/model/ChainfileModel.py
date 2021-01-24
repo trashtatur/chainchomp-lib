@@ -1,4 +1,7 @@
-class ChainfileModel:
+from chainchomplib.abstracts.Serializable import Serializable
+
+
+class ChainfileModel(Serializable):
 
     def __init__(
             self,
@@ -8,7 +11,7 @@ class ChainfileModel:
             previous_links=None,
             start='echo "No start script provided"',
             stop='echo "No stop script provided"',
-            adapter='rabbitmq',
+            adapter='chainchomp_rabbitmq',
             profile='default'
     ):
         if next_links is None:
