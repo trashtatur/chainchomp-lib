@@ -1,4 +1,4 @@
-from schema import Schema, Or, Optional
+from schema import Schema, Or, Optional, Regex
 
 from chainchomplib.abstracts.AbstractSchema import AbstractSchema
 
@@ -19,5 +19,5 @@ class ChainlinkSchema(AbstractSchema):
     def get_schema_dict(cls) -> dict:
         return {
             'name': str,
-            Optional(Or("next", "previous")): [str],
+            Optional(Or("next", "previous")): [Regex(r'^(((?:[0-9]{1,3}\.){3}[0-9]{1,3})|localhost)::\w+$')],
         }

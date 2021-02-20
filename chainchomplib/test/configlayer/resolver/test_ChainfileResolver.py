@@ -27,9 +27,9 @@ class ChainfileResolverTest(unittest.TestCase):
 
     @parameterized.expand([
         ['minimal_chainfile.yml', ChainfileModel('test', 'test')],
-        ['test_chainfile_1.yml', ChainfileModel('test', 'test', ['test', 'test2'])],
-        ['test_chainfile_2.yml', ChainfileModel('test', 'test', ['test'], start='test')],
-        ['test_chainfile_3.yml', ChainfileModel('test', 'test', ['test'], adapter='test', start='test')],
+        ['test_chainfile_1.yml', ChainfileModel('test', 'test', ['localhost::test', 'localhost::test2'])],
+        ['test_chainfile_2.yml', ChainfileModel('test', 'test', ['localhost::test'], start='test')],
+        ['test_chainfile_3.yml', ChainfileModel('test', 'test', ['localhost::test'], adapter='test', start='test')],
     ])
     def test_that_it_only_adds_existing_data_to_model(self, file, expected):
         result = ChainfileResolver.resolve(os.path.join(self.configPath, file))

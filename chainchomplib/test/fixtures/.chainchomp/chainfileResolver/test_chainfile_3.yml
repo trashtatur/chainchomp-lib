@@ -2,6 +2,6 @@ project: 'test'
 chainlink:
   name: 'test'
   next:
-    - 'test'
+    - 'localhost::test'
 start: 'test'
 adapter: 'test'

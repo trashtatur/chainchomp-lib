@@ -2,5 +2,5 @@ project: 'test'
 chainlink:
   name: 'test'
   next:
-    - 'test'
-    - 'test2'
+    - 'localhost::test'
+    - 'localhost::test2'

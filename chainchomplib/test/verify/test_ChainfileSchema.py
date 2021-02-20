@@ -17,7 +17,7 @@ class ChainfileSchemaTest(unittest.TestCase):
         [{'project': 'test', 'start': 'test', 'stop': 'test', 'profile': 'test'}, ChainfileSchema(), NotValidException],
         [{'project': 'test', 'start': 'test', 'stop': 'test', 'profile': 'test', 'adapter': 'test'}, ChainfileSchema(), NotValidException],
         [{'project': 'test', 'chainlink': 'test'}, ChainfileSchema(), NotValidException],
-        [{'project': 'test', 'chainlink': {'next': 'test'}}, ChainfileSchema(), NotValidException],
+        [{'project': 'test', 'chainlink': {'next': '::test'}}, ChainfileSchema(), NotValidException],
         [{'project': 'test', 'chainlink': {'previous': 'test'}}, ChainfileSchema(), NotValidException],
         [{'project': 'test', 'chainlink': {'next': 'test', 'previous': 'test'}}, ChainfileSchema(), NotValidException],
         [{'chainlink': {'next': 'test', 'previous': 'test'}}, ChainfileSchema(), NotValidException],
@@ -28,8 +28,8 @@ class ChainfileSchemaTest(unittest.TestCase):
             SchemaVerifier.verify(data, schema)
 
     @parameterized.expand([
-        [{'project': 'test', 'chainlink': {'name': 'test', 'next': ['test']}}, ChainfileSchema()],
-        [{'project': 'test', 'chainlink': {'name': 'test', 'next': ['test'], 'previous': ['test']}}, ChainfileSchema()],
+        [{'project': 'test', 'chainlink': {'name': 'test', 'next': ['localhost::test']}}, ChainfileSchema()],
+        [{'project': 'test', 'chainlink': {'name': 'test', 'next': ['localhost::test'], 'previous': ['localhost::test']}}, ChainfileSchema()],
         [{'project': 'test', 'chainlink': {'name': 'test'}}, ChainfileSchema()],
         [{'project': 'test', 'chainlink': {'name': 'test'}, 'start': 'test'}, ChainfileSchema()],
         [{'project': 'test', 'chainlink': {'name': 'test'}, 'start': 'test', 'stop': 'test'}, ChainfileSchema()],
